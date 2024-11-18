@@ -9,6 +9,7 @@ public class CharacterShootSystem : ComponentSystem
     {
         _shootQuery = GetEntityQuery(ComponentType.ReadOnly<InputData>(), ComponentType.ReadOnly<ShootData>(), ComponentType.ReadOnly<UserInputData>());
     }
+
     protected override void OnUpdate()
     {
         Entities.With(_shootQuery).ForEach(

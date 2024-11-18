@@ -9,6 +9,7 @@ public class ShootAbility : MonoBehaviour, IAbility
     public float shootDelay = float.MinValue;
 
     private float _shootTime = 0;
+
     public void Execute()
     {
         if (Time.time < _shootTime + shootDelay) return;

@@ -9,6 +9,7 @@ public class CharacterMoveSystem : ComponentSystem
     {
         _moveQuery = GetEntityQuery(ComponentType.ReadOnly<InputData>(), ComponentType.ReadOnly<MoveData>(), ComponentType.ReadOnly<Transform>());
     }
+
     protected override void OnUpdate()
     {
         Entities.With(_moveQuery).ForEach(

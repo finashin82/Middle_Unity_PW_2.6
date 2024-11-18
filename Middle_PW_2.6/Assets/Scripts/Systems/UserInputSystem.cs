@@ -13,9 +13,13 @@ public class UserInputSystem : ComponentSystem
 
     private InputAction _shootAction;
 
+    private InputAction _burstAction;
+
     private float2 _moveInput;
 
     private float _shootInput;
+
+    private float _burstInput;
 
     /// <summary>
     /// Создание системы (кэшируем запрос: наша система берёт все энтити у которых есть компонент UserInputData (все энтити, которым нужен Input)
@@ -57,6 +61,17 @@ public class UserInputSystem : ComponentSystem
         _shootAction.canceled += context => { _shootInput = context.ReadValue<float>(); };
 
         _shootAction.Enable();
+
+        // Рывок
+        _burstAction = new InputAction("burst", binding: "<Keyboard>/Tab");
+
+        _burstAction.performed += context => { _burstInput = context.ReadValue<float>(); };
+
+        _burstAction.started += context => { _burstInput = context.ReadValue<float>(); };
+
+        _burstAction.canceled += context => { _burstInput = context.ReadValue<float>(); };
+
+        _burstAction.Enable();
     }
 
     // Срабатывает когда отключается система
@@ -65,6 +80,8 @@ public class UserInputSystem : ComponentSystem
         _moveAction.Disable();
 
         _shootAction.Disable();
+
+        _burstAction.Disable();
     }
 
     protected override void OnUpdate() 
@@ -75,6 +92,8 @@ public class UserInputSystem : ComponentSystem
                 inputData.Move = _moveInput; 
 
                 inputData.Shoot = _shootInput;
+
+                inputData.Burst = _burstInput;
             });
     }
 }
