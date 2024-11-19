@@ -483,7 +483,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.5
   ShootAction: {fileID: 857569770}
-  BurstAction: {fileID: 857569771}
   burst: 0.05
 --- !u!114 &857569770
 MonoBehaviour:
@@ -499,20 +498,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 0}
   shootDelay: 2
---- !u!114 &857569771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 857569768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5686ff1462a71c14da94d574a7685498, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootDelay: 2
-  _burst: 2
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
