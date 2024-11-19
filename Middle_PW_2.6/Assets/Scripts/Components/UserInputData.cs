@@ -8,8 +8,6 @@ public class UserInputData : MonoBehaviour, IConvertGameObjectToEntity
 
     public MonoBehaviour ShootAction;
 
-    public MonoBehaviour BurstAction;
-
     public float burst;
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
@@ -26,7 +24,7 @@ public class UserInputData : MonoBehaviour, IConvertGameObjectToEntity
             dstManager.AddComponentData(entity, new ShootData());
         }
 
-        dstManager.AddComponentData(entity, new BurstData());
+        dstManager.AddComponentData(entity, new BurstData { Burst = burst });
     }
 }
 
@@ -36,7 +34,7 @@ public struct InputData : IComponentData
 
     public float Shoot;
 
-    public float Burst;
+    public float2 BurstMove;
 }
 
 public struct MoveData : IComponentData
@@ -51,5 +49,5 @@ public struct ShootData : IComponentData
 
 public struct BurstData : IComponentData
 {
-    
+    public float Burst;
 }

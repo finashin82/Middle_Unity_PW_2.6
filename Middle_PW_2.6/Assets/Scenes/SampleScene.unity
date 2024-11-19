@@ -484,7 +484,7 @@ MonoBehaviour:
   speed: 0.5
   ShootAction: {fileID: 857569770}
   BurstAction: {fileID: 857569771}
-  burst: 1
+  burst: 0.05
 --- !u!114 &857569770
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,18 +7,19 @@ public class CharacterBurstSystem : ComponentSystem
 
     protected override void OnCreate()
     {
-        _burstQuery = GetEntityQuery(ComponentType.ReadOnly<BurstData>(), ComponentType.ReadOnly<UserInputData>(), ComponentType.ReadOnly<InputData>());
+        _burstQuery = GetEntityQuery(ComponentType.ReadOnly<BurstData>(), ComponentType.ReadOnly<InputData>(), ComponentType.ReadOnly<Transform>());
     }
 
     protected override void OnUpdate()
     {
         Entities.With(_burstQuery).ForEach(
-            (Entity entity, UserInputData input) =>
+            (Entity entity, Transform transform, ref InputData inputData, ref BurstData burstData) =>
             {
-                if (input.BurstAction != null && input.BurstAction is ISkill skill)
-                {
-                    skill.ExecuteBurst();                    
-                }                
+                var pos = transform.position;
+
+                pos += new Vector3(0, 0, inputData.BurstMove.y * burstData.Burst);
+
+                transform.position = pos;            
             });
     }
 }

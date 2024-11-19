@@ -93,7 +93,7 @@ public class UserInputSystem : ComponentSystem
 
                 inputData.Shoot = _shootInput;
 
-                inputData.Burst = _burstInput;
+                inputData.BurstMove = _burstInput;
             });
     }
 }
